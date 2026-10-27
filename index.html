@@ -982,7 +982,10 @@ function resetAll(){ if(!confirm('이름과 사귄 날을 지우고 처음부터
 /* ---------- 시작 ---------- */
 function fit(){ const p=$('.phone'); if(innerWidth<=500){ p.style.transform=''; return; } p.style.transform=`scale(${Math.min(1,(innerHeight-24)/868,(innerWidth-24)/414)})`; }
 addEventListener('resize',fit); fit();
-if(ME){ applyName(); } else { $('#intro').classList.remove('gone'); }
+// 들어올 때마다 이름·사귄 날을 확인하고 고칠 수 있게 (저장된 값은 미리 채워둠)
+$('#inName').value = ME; $('#inSince').value = SINCE;
+if(ME){ $('#intro h2').textContent='다시 왔구나 💚'; $('#intro p').innerHTML='이름이나 사귄 날을 바꾸고 싶으면<br>여기서 고치고 들어가요'; }
+$('#intro').classList.remove('gone');
 tick(); setInterval(tick,1000);
 </script>
 </body>
